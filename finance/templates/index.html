@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    C$50 Finance
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in table %}
+            <tr>
+                <td>{{ i["symbol"]}}</td>
+                <td>{{ i["name"]}}</td>
+                <td>{{ i["shares"]}}</td>
+                <td>{{ i["price"] | usd }}</td>
+                <td>{{ (i["shares"] * i["price"]) | usd }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p><h4 style="text-align:right">Cash - {{ cash }}</h4></p>
+<p><h5 style="text-align:right">Total - {{ total }}</h5></p>
+{% endblock %}
+
